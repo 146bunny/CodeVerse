@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Search{% endblock title %}
+{% block body %}
+{% if posts|length == 0 %}
+    <h5 class="text-center my-5 mb-0">No search results for {{search}}...
+        </h5><br>
+        <div class="d-flex mx-5">
+            <ul class="list-inline mx-auto justify-content-center">Suggestions:<br>
+                <li>Make sure that all words are spelled correctly.</li>
+                <li>Try different keywords</li>
+                <li>Try more general keywords</li>
+                <ul>
+    </div>
+
+</ul>
+{% else %}
+<h2 class=" text-center my-5">Search Results for {{search}}...</h2>
+{% for post in posts %}
+<div class="container my-3">
+    <div class="p-5 border rounded overflow-hidden shadow-sm align-items-center bg-light">
+
+        <div class="col-lg-12">
+          <h6 class="display-10 mb-3 text-primary">Article by {{post.author}}</h6>
+          <p>{{post.timeStamp}}</p>
+          <h3 class="display-6 fw-bold text-body-emphasis mb-3">{{post.title}}</h3>
+          <p class="lead">{{post.content | truncatechars:500}}</p>
+          
+          <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">
+            Continue reading
+          </a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock body %}
