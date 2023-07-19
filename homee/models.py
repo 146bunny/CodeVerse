@@ -8,5 +8,7 @@ class Contact(models.Model):
     phone=models.CharField(max_length=13,null=True)
     content=models.TextField(null=True)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True,null=True)
+    # def __str__(self):
+    #     return "Details about "+ self.name
     def __str__(self):
-        return "Details about "+ self.name
+        return f"Details about {self.name}"
